@@ -3,57 +3,58 @@
 #include <iostream>
 using namespace sf;
 int score=0;
-int N=30,M=25;
-int size=30;
-int w = size*N;
-int h = size*M;
+int rows=30,columns=25;
+int length=30;
+int width = length*rows;
+int height = length*columns;
 int ok=0;
-int dir=0,num=25;
+int dir=0,num=5;
 bool gameover=false;
 bool imput=false;
 bool valid=false;
 
 struct Snake
-{ int x,y;}  s[100];
+{ int x,y;}  snake[1400];
 
 struct Fruct
-{ int x,y=M;} f;
+{ int x,y;} fruit;
 
-void Tick()
+void Logic()
  {
     for (int i=num;i>0;--i)
-	 {s[i].x=s[i-1].x;
-	 s[i].y=s[i-1].y;}
+	 {snake[i].x=snake[i-1].x;
+	 snake[i].y=snake[i-1].y;}
 
-    if (dir==0) s[0].y+=1;
-    if (dir==1) s[0].x-=1;
-    if (dir==2) s[0].x+=1;
-    if (dir==3) s[0].y-=1;
+    if (dir==0) snake[0].y+=1;
+    if (dir==1) snake[0].x-=1;
+    if (dir==2) snake[0].x+=1;
+    if (dir==3) snake[0].y-=1;
 
-	if ((s[0].x==f.x) && (s[0].y==f.y))
-      { num++;
+    if ((snake[0].x==fruit.x) && (snake[0].y==fruit.y))
+    {
+        num++;
         do
         {
 
-        valid=true;
-    	f.x=rand() % N;
-        f.y=rand() % M;
-        ok=rand()%4;
+            valid=true;
+            fruit.x=rand() % rows;
+            fruit.y=rand() % columns;
+            ok=rand()%4;
 
-        for(int i=1;i<num;i++)
-            if((s[i].x==f.x)&&(s[i].y)==(f.y))
-                valid=false;
+            for(int i=1; i<num; i++)
+                if((snake[i].x==fruit.x)&&(snake[i].y)==(fruit.y))
+                    valid=false;
         }
         while(valid==false);
-        }
+    }
 
-    if (s[0].x>=N) {gameover=true;}
-    if (s[0].x<0) gameover=true;
-    if (s[0].y>M-1) gameover=true;
-    if (s[0].y<=0) gameover=true;
+    if (snake[0].x>=rows) gameover=true;
+    if (snake[0].x<0) gameover=true;
+    if (snake[0].y>columns-1) gameover=true;
+    if (snake[0].y<0) gameover=true;
 
     for (int i=1;i<num;i++)
-     if (s[0].x==s[i].x && s[0].y==s[i].y) gameover=true; ;
+     if (snake[0].x==snake[i].x && snake[0].y==snake[i].y) gameover=true;
 imput=false;
  }
 
@@ -61,11 +62,11 @@ int main()
 {
 	srand(time(0));
 
-    RenderWindow window(VideoMode(w, h), "Snake Game!");
+    RenderWindow window(VideoMode(width, height), "Snake Game!");
 
 	Texture t1,t2,t3,t4,t5,t6;
 	t1.loadFromFile("images/fundalS.png");
-	t2.loadFromFile("images/f1.png");
+	t2.loadFromFile("images/sarpe1.png");
 	t3.loadFromFile("images/mar.png");
     t4.loadFromFile("images/cirese.png");
     t5.loadFromFile("images/lamaie.png");
@@ -77,27 +78,28 @@ int main()
     Sprite sprite5(t5);
     Sprite sprite6(t6);
 	Clock clock;
-    float timer=0, delay=0.1;
+    float timer=0, delay=0.5;
 
-	f.x=10;
-    f.y=10;
+	fruit.x=10;
+    fruit.y=10;
 
-     Event e;
-   while (window.isOpen())
+    Event e;
+    while (window.isOpen())
     {
         if (gameover==true)
-                window.close();
-		float time = clock.getElapsedTime().asSeconds();
-		clock.restart();
+            window.close();
+        float time = clock.getElapsedTime().asSeconds();
+        clock.restart();
         timer+=time;
 
 
         while (window.pollEvent(e))
-        {if (gameover==true)
+        {
+            if (gameover==true)
                 window.close();
             if (e.type == Event::Closed)
                 window.close();
-              if (gameover==true)
+            if (gameover==true)
                 window.close();
 		}
 
@@ -107,21 +109,21 @@ int main()
 		if ((Keyboard::isKeyPressed(Keyboard::Down) and dir!=3)and imput==false) {dir=0;imput=true;}
 		if (Keyboard::isKeyPressed(Keyboard::Escape)) gameover=true;
 
-		if (timer>delay) {timer=0; Tick();}
+		if (timer>delay) {timer=0; Logic();}
 
    ////// draw  ///////
     window.clear();
 
     /*for (int i=0; i<N; i++)
 	  for (int j=0; j<M; j++)
-		{ sprite1.setPosition(i*size,j*size);*/
+		{ sprite1.setPosition(i*length,j*length);*/
 		 window.draw(sprite1);
 		 //}
 
 
     //set snake
 	for (int i=0;i<num;i++)
-	    { sprite2.setPosition(s[i].x*size, s[i].y*size);
+	    { sprite2.setPosition(snake[i].x*length, snake[i].y*length);
 	     window.draw(sprite2);
 
 	     }
@@ -130,25 +132,25 @@ int main()
 
         if(ok==0)
         {
-            sprite4.setPosition(f.x*size, f.y*size);
+            sprite4.setPosition(fruit.x*length, fruit.y*length);
             window.draw(sprite4);
 
         }
         if(ok==1)
         {
-            sprite3.setPosition(f.x*size, f.y*size);
+            sprite3.setPosition(fruit.x*length, fruit.y*length);
             window.draw(sprite3);
 
         }
         if(ok==2)
             {
-            sprite5.setPosition(f.x*size, f.y*size);
+            sprite5.setPosition(fruit.x*length, fruit.y*length);
             window.draw(sprite5);
 
             }
         if(ok==3)
             {
-            sprite6.setPosition(f.x*size, f.y*size);
+            sprite6.setPosition(fruit.x*length, fruit.y*length);
             window.draw(sprite6);
 
             }
