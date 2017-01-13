@@ -532,15 +532,145 @@
 1484035908 source:c:\users\mastercode\desktop\1.6\src\menu.cpp
 	"Menu.h"
 
-1484035908 source:c:\users\mastercode\desktop\0.7\src\menu.cpp
-	"Menu.h"
-
-1484035955 c:\users\mastercode\desktop\0.7\include\menu.h
-	"SFML/Graphics.hpp"
-
-1484156463 source:c:\users\mastercode\desktop\0.7\main.cpp
+1484162796 source:c:\users\andreipc\desktop\0.7\main.cpp
 	<SFML/Graphics.hpp>
+	<SFML/Audio.hpp>
 	"Menu.h"
 	<time.h>
 	<iostream>
+
+1484035955 c:\users\andreipc\desktop\0.7\include\menu.h
+	"SFML/Graphics.hpp"
+
+1484035908 source:c:\users\andreipc\desktop\0.7\src\menu.cpp
+	"Menu.h"
+
+1484253998 source:c:\users\mastercode\desktop\0.8\main.cpp
+	<SFML/Graphics.hpp>
+	<SFML/Audio.hpp>
+	"Menu.h"
+	<time.h>
+	<iostream>
+
+1470639234 c:\users\mastercode\desktop\sfml-2.4.1\include\sfml\audio.hpp
+	<SFML/System.hpp>
+	<SFML/Audio/InputSoundFile.hpp>
+	<SFML/Audio/Listener.hpp>
+	<SFML/Audio/Music.hpp>
+	<SFML/Audio/OutputSoundFile.hpp>
+	<SFML/Audio/Sound.hpp>
+	<SFML/Audio/SoundBuffer.hpp>
+	<SFML/Audio/SoundBufferRecorder.hpp>
+	<SFML/Audio/SoundFileFactory.hpp>
+	<SFML/Audio/SoundFileReader.hpp>
+	<SFML/Audio/SoundFileWriter.hpp>
+	<SFML/Audio/SoundRecorder.hpp>
+	<SFML/Audio/SoundSource.hpp>
+	<SFML/Audio/SoundStream.hpp>
+
+1478253376 c:\users\mastercode\desktop\sfml-2.4.1\include\sfml\audio\inputsoundfile.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/System/NonCopyable.hpp>
+	<SFML/System/Time.hpp>
+	<string>
+
+1470639234 c:\users\mastercode\desktop\sfml-2.4.1\include\sfml\audio\export.hpp
+	<SFML/Config.hpp>
+
+1470639234 c:\users\mastercode\desktop\sfml-2.4.1\include\sfml\audio\listener.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/System/Vector3.hpp>
+
+1478253376 c:\users\mastercode\desktop\sfml-2.4.1\include\sfml\audio\music.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/Audio/SoundStream.hpp>
+	<SFML/Audio/InputSoundFile.hpp>
+	<SFML/System/Mutex.hpp>
+	<SFML/System/Time.hpp>
+	<string>
+	<vector>
+
+1478253376 c:\users\mastercode\desktop\sfml-2.4.1\include\sfml\audio\soundstream.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/Audio/SoundSource.hpp>
+	<SFML/System/Thread.hpp>
+	<SFML/System/Time.hpp>
+	<SFML/System/Mutex.hpp>
+	<cstdlib>
+
+1470639234 c:\users\mastercode\desktop\sfml-2.4.1\include\sfml\audio\soundsource.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/Audio/AlResource.hpp>
+	<SFML/System/Vector3.hpp>
+
+1470639234 c:\users\mastercode\desktop\sfml-2.4.1\include\sfml\audio\alresource.hpp
+	<SFML/Audio/Export.hpp>
+
+1470639234 c:\users\mastercode\desktop\sfml-2.4.1\include\sfml\audio\outputsoundfile.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/System/NonCopyable.hpp>
+	<string>
+
+1470639234 c:\users\mastercode\desktop\sfml-2.4.1\include\sfml\audio\sound.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/Audio/SoundSource.hpp>
+	<SFML/System/Time.hpp>
+	<cstdlib>
+
+1470639234 c:\users\mastercode\desktop\sfml-2.4.1\include\sfml\audio\soundbuffer.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/Audio/AlResource.hpp>
+	<SFML/System/Time.hpp>
+	<string>
+	<vector>
+	<set>
+
+1470639234 c:\users\mastercode\desktop\sfml-2.4.1\include\sfml\audio\soundbufferrecorder.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/Audio/SoundBuffer.hpp>
+	<SFML/Audio/SoundRecorder.hpp>
+	<vector>
+
+1470639234 c:\users\mastercode\desktop\sfml-2.4.1\include\sfml\audio\soundrecorder.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/Audio/AlResource.hpp>
+	<SFML/System/Thread.hpp>
+	<SFML/System/Time.hpp>
+	<vector>
+	<string>
+
+1470639234 c:\users\mastercode\desktop\sfml-2.4.1\include\sfml\audio\soundfilefactory.hpp
+	<SFML/Audio/Export.hpp>
+	<string>
+	<vector>
+	<SFML/Audio/SoundFileFactory.inl>
+
+1470639234 c:\users\mastercode\desktop\sfml-2.4.1\include\sfml\audio\soundfilefactory.inl
+
+1470639234 c:\users\mastercode\desktop\sfml-2.4.1\include\sfml\audio\soundfilereader.hpp
+	<SFML/Audio/Export.hpp>
+	<string>
+
+1470639234 c:\users\mastercode\desktop\sfml-2.4.1\include\sfml\audio\soundfilewriter.hpp
+	<SFML/Audio/Export.hpp>
+	<string>
+
+1484035955 c:\users\mastercode\desktop\0.8\include\menu.h
+	"SFML/Graphics.hpp"
+
+1484035908 source:c:\users\mastercode\desktop\0.8\src\menu.cpp
+	"Menu.h"
+
+1484325763 source:c:\users\andreipc\desktop\0.9\main.cpp
+	<SFML/Graphics.hpp>
+	<SFML/Audio.hpp>
+	"Menu.h"
+	<time.h>
+	<iostream>
+
+1484035955 c:\users\andreipc\desktop\0.9\include\menu.h
+	"SFML/Graphics.hpp"
+
+1484035908 source:c:\users\andreipc\desktop\0.9\src\menu.cpp
+	"Menu.h"
 

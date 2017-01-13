@@ -21,6 +21,7 @@
 					<Add library="sfml-graphics-d" />
 					<Add library="sfml-window-d" />
 					<Add library="sfml-system-d" />
+					<Add library="sfml-audio-d" />
 					<Add directory="../SFML-2.4.1/lib" />
 				</Linker>
 			</Target>
@@ -40,6 +41,7 @@
 					<Add library="sfml-graphics-s" />
 					<Add library="sfml-window-s" />
 					<Add library="sfml-system-s" />
+					<Add library="sfml-audio-s" />
 					<Add directory="../SFML-2.4.1/lib" />
 				</Linker>
 			</Target>
@@ -54,6 +56,7 @@
 			<Add library="sfml-graphics" />
 			<Add library="sfml-window" />
 			<Add library="sfml-system" />
+			<Add library="sfml-audio" />
 			<Add directory="../SFML-2.4.1/lib" />
 		</Linker>
 		<Unit filename="include/Menu.h" />

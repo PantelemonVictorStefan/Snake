@@ -1,10 +1,11 @@
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include "Menu.h"
 #include <time.h>
 #include <iostream>
 
 using namespace sf;
-int score=0,BoosterON=0,effect=-1,highColor=0;
+int score=0,BoosterON=0,effect=-1,highColor=0,track=rand()%2;
 int rows=30,columns=25;
 int length=35;
 int width = length*rows;
@@ -19,6 +20,8 @@ bool valid=false;
 bool SpawnBoost=false;
 bool ChangeSkin=false;
 bool TrapOn=false,high=false,pausegame=false;
+sf::Music music;
+float timp1;
 
 float delay=0.1;
 
@@ -81,9 +84,9 @@ void Logic()
         ScoreSkin++;
 
 
-        if(score>=10)
+        if(score>=1)
         {
-            score=score-10;
+            score=score-1;
             BoosterON=100;
             SpawnBoost=true;
             effect=rand()%5;
@@ -94,10 +97,10 @@ void Logic()
                 booster.x=rand() % rows;
                 booster.y=rand() % columns;
                 for(int i=1; i<num; i++)
-                    if((snake[i].x==booster.x)&&(snake[i].y)==(booster.y))
-                        valid=false;
+                    if((snake[i].x==booster.x)&&(snake[i].y)==(booster.y))valid=false;
+
             }
-            while(valid==false);
+            while(valid==false && (fruit.x==booster.x) && (fruit.y==booster.y) );
 
 
 
@@ -174,15 +177,15 @@ imput=false;
 	t2.loadFromFile("images/sarpeORG.png");
 	t3.loadFromFile("images/mouse1.png");//1
     t4.loadFromFile("images/mouse2.png");//2
-    t5.loadFromFile("images/mouse13.png");//3
-    t6.loadFromFile("images/mouse11.png");//4
-    t7.loadFromFile("images/mouse12.png");//5
-    t8.loadFromFile("images/mouse14.png");//6
+    t5.loadFromFile("images/mouse3.png");//3
+    t6.loadFromFile("images/mouse4.png");//4
+    t7.loadFromFile("images/mouse5.png");//5
+    t8.loadFromFile("images/mouse6.png");//6
     t9.loadFromFile("images/mar.png");
     t10.loadFromFile("images/capsune.png");
-    t11.loadFromFile("images/mouse7.png");
-    t12.loadFromFile("images/mouse8.png");
-    t13.loadFromFile("images/mouse9.png");
+    t11.loadFromFile("images/mouse1M.png");
+    t12.loadFromFile("images/mouse1M.png");
+    t13.loadFromFile("images/mouse1M.png");
     t14.loadFromFile("images/mouse10.png");
     t15.loadFromFile("images/sarpeORG1.png");
     t16.loadFromFile("images/sarpe3.png");
@@ -191,10 +194,10 @@ imput=false;
     t19.loadFromFile("images/sarpe2.1.png");
     t20.loadFromFile("images/lamaie.png");
 
-    t21.loadFromFile("images/mouse4.png");//free to use
+    t21.loadFromFile("images/mouse1M.png");//free to use
     t22.loadFromFile("images/mouse6.png");//free to use
 
-    t23.loadFromFile("images/moarte1.png");
+    t23.loadFromFile("images/sarpe/moarte1");
     t24.loadFromFile("images/sarpe/1.png");
     t25.loadFromFile("images/sarpe/2.png");
     t26.loadFromFile("images/sarpe/3.png");
@@ -243,6 +246,8 @@ imput=false;
 	fruit.x=10;
     fruit.y=10;
 
+
+
     Event e;
     while (window.isOpen())
     {
@@ -265,6 +270,25 @@ imput=false;
                 window.close();
 		}
 
+
+        if((timp1+music.getDuration().asSeconds())<(clock.getElapsedTime().asSeconds()))
+        {
+
+            if(track==0)
+            {
+
+
+                music.openFromFile("sound/1.ogg");
+                track=1;
+            }
+            if(track==1)
+            {
+        music.openFromFile("sound/2.ogg");
+        track=0;
+    }
+    timp1=clock.getElapsedTime().asSeconds();
+         music.play();}
+
 		if ((Keyboard::isKeyPressed(Keyboard::Left) and dir!=2)and imput==false) {dir=1;imput=true;}
 	    if ((Keyboard::isKeyPressed(Keyboard::Right) and dir!=1)and imput==false)  {dir=2;imput=true;}
 	    if ((Keyboard::isKeyPressed(Keyboard::Up) and dir!=0)and imput==false) {dir=3;imput=true;}
@@ -277,6 +301,7 @@ imput=false;
    ////// draw  ///////
     window.clear();
     window.draw(sprite1);
+
 
 
     //set snake
@@ -330,8 +355,7 @@ imput=false;
 
         }
             if(high)
-            {
-                window.draw(sprite32);
+            {   window.draw(sprite32);
                 if(highColor%7==0)
                      for (int i=0; i<num; i++)
                 {
@@ -374,6 +398,8 @@ imput=false;
                     sprite30.setPosition(snake[i].x*length, snake[i].y*length);
                     window.draw(sprite30);
                 }
+
+                //window.draw(sprite32);
             }
     //set food
 
@@ -482,9 +508,15 @@ imput=false;
     //return 0;
 }
 
-
 int main()
    {
+    Clock clock;
+     music.openFromFile("sound/menu.ogg");
+    timp1=clock.getElapsedTime().asSeconds();
+        music.play();
+
+
+
     start:
     sf::RenderWindow window(sf::VideoMode(900, 400), "Snake Game.");
     Menu menu(window.getSize().x,window.getSize().y);
@@ -512,9 +544,8 @@ int main()
                 case sf::Keyboard::Return:
                     switch(menu.GetPressedItem())
                     {
-                    case 0:
-                        {
-                            //if(Stop==false)
+                    case 0:{
+
                        {
 
                         TextureSkin=rand()%6;
