@@ -31,6 +31,10 @@ struct Trap
     int x,y;
 }trapp;
 
+struct Fruct2
+{
+    int x,y;
+} fruit2;
 
 struct Snake
 {
@@ -88,15 +92,30 @@ void Logic()
     // RIGHT 2 x++
     // UP    3 y--
     // DOWN  0 y++
-
+for(int j=0;j<=num;j++)
 if(dir2==0)
-{   if(snake2[0].y==30*length)
+{   if((snake2[0].y==30*length))
         {
-            dir2=1;
+            dir2=1;j=num+1;
             for(int i=1;i<num2;i++)
-                if(snake2[i].x==snake2[0].x-1)
-                    {dir2=2;}
+                if((snake2[i].x==snake2[0].x-1)||((snake[j].x==snake2[0].x-1)&&(snake2[j].y==snake2[0].y)))
+                    {dir2=2;
+                    if(snake[j].x==snake2[0].x-1)
+                        j=num+1;
+                    }
         }
+
+
+        if((snake[j].y==snake2[0].y+1)&&(snake2[j].x==snake2[0].x))
+            {
+                dir=1;j=num+1;
+                for(int i=0;i<=num;i++)
+                if((snake[i].x==snake2[0].x-1)&&(snake2[j].y==snake2[0].y))
+                    {dir2=2;
+                        i=num+1;
+                    }
+            }
+
     for(int i=1;i<=num2;i++)
         if((snake2[i].y==snake2[0].y+1)&&((snake2[i].x)==snake2[0].x))
         {
@@ -106,14 +125,30 @@ if(dir2==0)
             {dir2=2; }
     }
 }
+
+
+
+for(int j=0;j<=num;j++)
 if(dir2==3)
 {   if(snake2[0].y==0)
         {
-            dir2=1;
+            dir2=1;j=num+1;
             for(int i=1;i<num2;i++)
-                if(snake2[i].x==snake2[0].x-1)
-                    {dir2=2;}
+                if((snake2[i].x==snake2[0].x-1)||((snake[j].x==snake2[0].x-1)&&((snake[j].y)==snake2[0].y)))
+                    {dir2=2;
+                    if(snake[j].x==snake2[0].x-1)
+                        j=num+1;}
         }
+
+        if((snake[j].y==snake2[0].y-1)&&((snake[j].x)==snake2[0].x))
+        dir2=1;j=num+1;
+        {
+             for(int i=0;i<num;i++)
+                if((snake[i].x==snake2[0].x-1)&&((snake[i].y)==snake2[0].y))
+                    {dir2=2;
+                        i=num+1;}
+        }
+
     for(int i=1;i<=num2;i++)
         if((snake2[i].y==snake2[0].y-1)&&((snake2[i].x)==snake2[0].x))
         {
@@ -123,31 +158,65 @@ if(dir2==3)
             {dir2=2; }
     }
 }
+for(int j=0;j<=num;j++)
 if(dir2==1)
 {   if(snake2[0].x==0)
         {
-            dir2=0;
+            dir2=0;j=num+1;
             for(int i=1;i<num2;i++)
-                if(snake2[i].y==snake2[0].y-1)
-                    {dir2=3;}
-        }
+                if((snake2[i].y==snake2[0].y-1)||((snake[j].y==snake2[0].y-1)&&((snake[j].x)==snake2[0].x)))
+                    {dir2=3;
+                    if(snake[j].y==snake2[0].x-1)
+                        j=num+1;
+                    }}
+
+                   if((snake[j].x==snake2[0].x+1)&&((snake[j].y)==snake2[0].y))
+                     {dir2=0;j=num+1;
+                      for(int i=0;i<=num;i++)
+                     if((snake[i].y==snake2[0].y-1)&&((snake[i].x)==snake2[0].x))
+                    {dir2=3;
+                        i=num+1;
+                    }
+
+                     }
+
+
     for(int i=1;i<=num2;i++)
         if((snake2[i].x==snake2[0].x-1)&&((snake2[i].y)==snake2[0].y))
         {
         dir2=0;
         for(int i=1;i<num2;i++)
             if((snake2[i].y==snake2[0].y-1)&&(snake2[i].x==snake2[0].x))
-            {dir2=3; }
+            {dir2=3;
+            if(snake2[i].x==snake2[0].x)
+                j=num+1;
+            }
     }
 }
+for(int j=0;j<=num;j++)
 if(dir2==2)
 {   if(snake2[0].x==25*length)
         {
-            dir2=0;
+            dir2=0;j=num+1;
             for(int i=1;i<num2;i++)
-                if(snake2[i].y==snake2[0].y-1)
-                    {dir2=3;}
+                if((snake2[i].y==snake2[0].y-1)||((snake[j].y==snake2[0].y-1)&&((snake[j].x)==snake2[0].x)))
+                    {dir2=3;
+                    if(snake[j].x==snake2[0].x-1)
+                        j=num+1;
+                    }
         }
+
+        if((snake[j].x==snake2[0].x+1)&&((snake[j].y)==snake2[0].y))
+            {
+                 dir2=0;j=num+1;
+
+                 for(int i=0;i<=num;i++)
+                if((snake[i].y==snake2[0].y-1)&&((snake[i].x)==snake2[0].x))
+                    {dir2=3;
+                        i=num+1;
+                    }
+            }
+
     for(int i=1;i<=num2;i++)
         if((snake2[i].x==snake2[0].x+1)&&((snake2[i].y)==snake2[0].y))
         {
@@ -297,7 +366,7 @@ if ((snake2[0].x==fruit.x) && (snake2[0].y==fruit.y))
     if((snake[0].x==0) and dir==1) dir=3;*/
 
     for (int i=1;i<num;i++)
-     if ((snake[0].x==snake[i].x && snake[0].y==snake[i].y)||(snake[0].x==snake2[i].x && snake[0].y==snake2[i].y)) gameover=true;
+     if ((snake[0].x==snake[i].x && snake[0].y==snake[i].y))/*||(snake[0].x==snake2[i].x && snake[0].y==snake2[i].y))*/ gameover=true;
 
     for (int i=1;i<num;i++)
      if ((snake2[0].x==snake2[i].x && snake2[0].y==snake2[i].y)||(snake2[0].x==snake[i].x && snake2[0].y==snake[i].y))win=true;
